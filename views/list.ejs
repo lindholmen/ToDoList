@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+</head>
+<body>
+
+<h1 style="color: aquamarine">It is <%= kindOfDay %>!</h1>
+
+<ul>
+
+
+    <% for (item of newListItems) { %>
+    <li> <%= item %></li>
+    <% } %>
+
+</ul>
+
+<form method="post" action="/">
+    <label for="newItem"></label>
+    <input type="text" id ="newItem" name="newItem" placeholder="Type your item"><br>
+    <button type="submit" name="button">Add</button>
+</form>
+</body>
+</html>
