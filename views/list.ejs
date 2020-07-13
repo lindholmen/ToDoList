@@ -1,26 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>To Do List</title>
-</head>
-<body>
+<%- include('header') -%>
 
-<h1 style="color: aquamarine">It is <%= kindOfDay %>!</h1>
+<div class="content-container">
+    <div class="nav-container">
+        <ul id="nav-link">
+            <% if (listTitle != 'Work List'){ %>
+                <li class="filter-active"><a href="/">Today</a></li>
+                <li><a href="/work">Work</a></li>
+                <li><a href="/about">About</a></li>
+            <% } else { %>
+                <li><a href="/">Today</a></li>
+                <li class="filter-active"><a href="/work">Work</a></li>
+                    <li><a href="/about">About</a></li>
+            <% } %>
+        </ul>
 
-<ul>
+    </div>
 
+    <div class="box" id='heading'>
+        <h1><%= listTitle %></h1>
+    </div>
 
-    <% for (item of newListItems) { %>
-    <li> <%= item %></li>
-    <% } %>
-
-</ul>
-
-<form method="post" action="/">
-    <label for="newItem"></label>
-    <input type="text" id ="newItem" name="newItem" placeholder="Type your item"><br>
-    <button type="submit" name="button">Add</button>
-</form>
-</body>
-</html>
+    <div class="box">
+        <% for (item of newListItems) { %>
+            <div class="item">
+                <input type="checkbox">
+                <p> <%= item %></p>
+            </div>
+        <% } %>
+        <form id="form" class='item' method="post" action="/">
+            <input type="text" id ="newItem" name="newItem" placeholder="Type your item" autocomplete="off">
+            <button type="submit" name="listBtn" value=<%= listTitle %>>+</button>
+        </form>
+    </div>
+</div>
+<%- include('footer') -%>
